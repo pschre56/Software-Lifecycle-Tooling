@@ -32,7 +32,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: tictactoe
-          path: target/tictactoe.jar 
+          path: src/tictactoe.jar 
 
       - name: Create Release
         id: create_release
@@ -50,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }} 
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: target/tictactoe.jar  
+          asset_path: src/tictactoe.jar  
           asset_name: tictactoe.jar
           asset_content_type: application/java-archive
