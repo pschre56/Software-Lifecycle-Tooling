@@ -42,7 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}  
         with:
-          tag_name: v1.0.1  # Use a unique tag name for each release
+          tag_name: v1.0.2  # Use a unique tag name for each release
           release_name: Release v1.0.1 
           body: Release of version 1.0.1
 
