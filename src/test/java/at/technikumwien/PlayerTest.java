@@ -7,6 +7,14 @@ import org.junit.jupiter.api.Test;
 
 public class PlayerTest {
 
+
+    @Test
+    public void testPlayerConstructor() {
+
+        char expectedMarker = 'X';
+        Player player = new Player(expectedMarker);
+        assertEquals(expectedMarker, player.getMarker(), "Player marker should be set correctly");
+    }
     @Test
     public void testGetMarker() {
         Player player = new Player('X');
