@@ -3,20 +3,34 @@ package at.technikumwien;
 import java.util.Scanner;
 
 public class TicTacToe {
-
     private Player player1;
     private Player player2;
     private Player currentPlayer;
     private Board board;
 
-    // Konstruktor, der das Spiel initialisiert und Spieler, sowie das Spielfeld erstellt
     public TicTacToe() {
         player1 = new Player('X');
         player2 = new Player('O');
-        currentPlayer = player1; // Spieler 1 beginnt das Spiel
+        currentPlayer = player1;
         board = new Board();
     }
-    // Startet das Spiel
+
+    public Player getPlayer1() {
+        return player1;
+    }
+
+    public Player getPlayer2() {
+        return player2;
+    }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
+
+    public Board getBoard() {
+        return board;
+    }
+
     public void start() {
         Scanner scanner = new Scanner(System.in);
         boolean gameWon = false;
@@ -50,8 +64,8 @@ public class TicTacToe {
         board.print();
         scanner.close();
     }
-    // Wechselt den aktuellen Spieler
-    private void switchCurrentPlayer() {
+
+    public void switchCurrentPlayer() {
         if (currentPlayer == player1) {
             currentPlayer = player2;
         } else {
@@ -59,9 +73,7 @@ public class TicTacToe {
         }
     }
 
-    // Überprüft, ob der aktuelle Spieler gewonnen hat
     private boolean hasWinner() {
-        // Überprüfen der Zeilen
         for (int i = 0; i < 3; i++) {
             if (board.isCellEmpty(i, 0)) continue;
             if (board.cells[i][0] == board.cells[i][1] && board.cells[i][1] == board.cells[i][2]) {
@@ -69,7 +81,6 @@ public class TicTacToe {
             }
         }
 
-        // Überprüfen der Spalten
         for (int i = 0; i < 3; i++) {
             if (board.isCellEmpty(0, i)) continue;
             if (board.cells[0][i] == board.cells[1][i] && board.cells[1][i] == board.cells[2][i]) {
@@ -77,7 +88,6 @@ public class TicTacToe {
             }
         }
 
-        // Überprüfen der Diagonalen
         if (!board.isCellEmpty(1, 1)) {
             if ((board.cells[0][0] == board.cells[1][1] && board.cells[1][1] == board.cells[2][2]) ||
                     (board.cells[0][2] == board.cells[1][1] && board.cells[1][1] == board.cells[2][0])) {
@@ -87,7 +97,7 @@ public class TicTacToe {
 
         return false;
     }
-    // Überprüft, ob der Zug gültig ist (d.h. das Feld ist leer und innerhalb des Spielfelds)
+
     private boolean isValidMove(int row, int col) {
         return row >= 0 && row < 3 && col >= 0 && col < 3 && board.isCellEmpty(row, col);
     }
