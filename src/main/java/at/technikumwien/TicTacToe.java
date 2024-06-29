@@ -98,7 +98,7 @@ public class TicTacToe {
         return false;
     }
 
-    private boolean isValidMove(int row, int col) {
+    public boolean isValidMove(int row, int col) {
         return row >= 0 && row < 3 && col >= 0 && col < 3 && board.isCellEmpty(row, col);
     }
 
